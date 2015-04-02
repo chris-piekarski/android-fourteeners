@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mountains>
+
+    <mountain
+        name="Mt. Elbert"
+        county="Lake"
+        elevation="14433"
+        lat="39.11807"
+        long="-106.445417"
+        range="Sawatch"
+        rank="1" />
+    <mountain
+        name="Mt. Massive"
+        county="Lake"
+        elevation="14421"
+        lat="39.187298"
+        long="-106.475548"
+        range="Sawatch"
+        rank="2" />
+    <mountain
+        name="Mt. Harvard"
+        county="Chaffee"
+        elevation="14420"
+        lat="38.924328"
+        long="-106.320618"
+        range="Sawatch"
+        rank="3" />
+    <mountain
+        name="Blanca Peak"
+        county="Alamosa, Huerfano, Costilla"
+        elevation="14345"
+        lat="37.577473"
+        long="-105.485443"
+        range="Sangre de Cristo"
+        rank="4" />
+    <mountain
+        name="La Plata Peak"
+        county="Chaffee"
+        elevation="14336"
+        lat="39.029251"
+        long="-106.473145"
+        range="Sawatch"
+        rank="5" />
+    <mountain
+        name="Uncompahgre Peak"
+        county="Hinsdale"
+        elevation="14309"
+        lat="38.071507"
+        long="-107.462166"
+        range="San Juan"
+        rank="6" />
+    <mountain
+        name="Crestone Peak"
+        county="Saguache"
+        elevation="14294"
+        lat="37.966972"
+        long="-105.585304"
+        range="Sangre de Cristo"
+        rank="7" />
+    <mountain
+        name="Mt. Lincoln"
+        county="Park"
+        elevation="14286"
+        lat="39.351391"
+        long="-106.111404"
+        range="Mosquito"
+        rank="8" />
+    <mountain
+        name="Grays Peak"
+        county="Clear Creek, Summit"
+        elevation="14270"
+        lat="39.633820"
+        long="-105.817520"
+        range="Front"
+        rank="9" />
+    <mountain
+        name="Mt. Antero"
+        county="Chaffee"
+        elevation="14269"
+        lat="38.674088"
+        long="-106.246201"
+        range="Sawatch"
+        rank="10" />
+    <mountain
+        name="Torreys Peak"
+        county="Clear Creek, Summit"
+        elevation="14267"
+        lat="39.642742"
+        long="-105.821259"
+        range="Front"
+        rank="11" />
+    <mountain
+        name="Castle Peak"
+        county="Pitkin"
+        elevation="14265"
+        lat="39.009647"
+        long="-106.86144"
+        range="Elk"
+        rank="12" />
+    <mountain
+        name="Quandary Peak"
+        county="Summit"
+        elevation="14265"
+        lat="39.397236"
+        long="-106.106430"
+        range="Tenmile"
+        rank="13" />
+    <mountain
+        name="Mt. Evans"
+        county="Clear Creek"
+        elevation="14264"
+        lat="39.588360"
+        long="-105.643333"
+        range="Front"
+        rank="14" />
+    <mountain
+        name="Longs Peak"
+        county="Boulder"
+        elevation="14255"
+        lat="40.254902"
+        long="-105.615738"
+        range="Front"
+        rank="15" />
+    <mountain
+        name="Mt. Wilson"
+        county="Dolores"
+        elevation="14246"
+        lat="37.839310"
+        long="-107.991570"
+        range="San Juan"
+        rank="16" />
+    <mountain
+        name="Mt. Shavano"
+        county="Chaffee"
+        elevation="14229"
+        lat="38.619083"
+        long="-106.239296"
+        range="Sawatch"
+        rank="17" />
+    <mountain
+        name="Mt. Belford"
+        county="Chaffee"
+        elevation="14197"
+        lat="38.960575"
+        long="-106.360832"
+        range="Sawatch"
+        rank="18" />
+    <mountain
+        name="Crestone Needle"
+        county="Saguache, Custer"
+        elevation="14197"
+        lat="37.964737"
+        long="-105.576683"
+        range="Sangre de Cristo"
+        rank="19" />
+    <mountain
+        name="Mt. Princeton"
+        county="Chaffee"
+        elevation="14197"
+        lat="38.749062"
+        long="-106.242432"
+        range="Sawatch"
+        rank="20" />
+    <mountain
+        name="Mt. Yale"
+        county="Chaffee"
+        elevation="14196"
+        lat="38.844051"
+        long="-106.313965"
+        range="Sawatch"
+        rank="21" />
+    <mountain
+        name="Mt. Bross"
+        county="Park"
+        elevation="14172"
+        lat="39.335060"
+        long="-106.107376"
+        range="Mosquito"
+        rank="22" />
+    <mountain
+        name="Kit Carson Peak"
+        county="Saguache"
+        elevation="14165"
+        lat="37.979759"
+        long="-105.602562"
+        range="Sangre de Cristo"
+        rank="23" />
+    <mountain
+        name="Maroon Peak"
+        county="Pitkin, Gunnison"
+        elevation="14156"
+        lat="39.070713"
+        long="-106.989113"
+        range="Elk"
+        rank="24" />
+    <mountain
+        name="Tabeguache Peak"
+        county="Chaffee"
+        elevation="14155"
+        lat="38.625622"
+        long="-106.250710"
+        range="Sawatch"
+        rank="25" />
+    <mountain
+        name="Mt. Oxford"
+        county="Chaffee"
+        elevation="14153"
+        lat="38.964680"
+        long="-106.338432"
+        range="Sawatch"
+        rank="26" />
+    <mountain
+        name="Mt. Sneffels"
+        county="Ouray"
+        elevation="14150"
+        lat="38.003605"
+        long="-107.792229"
+        range="San Juan"
+        rank="27" />
+    <mountain
+        name="Mt. Democrat"
+        county="Park, Lake"
+        elevation="14148"
+        lat="39.339542"
+        long="-106.139946"
+        range="Mosquito"
+        rank="28" />
+    <mountain
+        name="Capitol Peak"
+        county="Pitkin"
+        elevation="14130"
+        lat="39.150166"
+        long="-107.083221"
+        range="Elk"
+        rank="29" />
+    <mountain
+        name="Pikes Peak"
+        county="El Paso"
+        elevation="14110"
+        lat="38.840542"
+        long="-105.044357"
+        range="Front"
+        rank="30" />
+    <mountain
+        name="Snowmass Mountian"
+        county="Pitkin, Gunnison"
+        elevation="14092"
+        lat="39.118809"
+        long="-107.066528"
+        range="Elk"
+        rank="31" />
+    <mountain
+        name="Mt. Eolus"
+        county="La Plata"
+        elevation="14083"
+        lat="37.621948"
+        long="-107.622498"
+        range="San Juan"
+        rank="32" />
+    <mountain
+        name="Windom Peak"
+        county="La Plata"
+        elevation="14082"
+        lat="37.621235"
+        long="-107.591774"
+        range="San Juan"
+        rank="33" />
+    <mountain
+        name="Challenger Point"
+        county="Saguache"
+        elevation="14081"
+        lat="37.980267"
+        long="-105.606766"
+        range="Sangre de Cristo"
+        rank="34" />
+    <mountain
+        name="Mt. Columbia"
+        county="Chaffee"
+        elevation="14073"
+        lat="38.903957"
+        long="-106.297485"
+        range="Sawatch"
+        rank="35" />
+    <mountain
+        name="Missouri Mountain"
+        county="Chaffee"
+        elevation="14067"
+        lat="38.947559"
+        long="-106.378471"
+        range="Sawatch"
+        rank="36" />
+    <mountain
+        name="Humboldt Peak"
+        county="Custer"
+        elevation="14064"
+        lat="37.976105"
+        long="-105.555351"
+        range="Sangre de Cristo"
+        rank="37" />
+    <mountain
+        name="Mt. Bierstadt"
+        county="Clear Creek"
+        elevation="14060"
+        lat="39.582638"
+        long="-105.668610"
+        range="Front"
+        rank="38" />
+    <mountain
+        name="Sunlight Peak"
+        county="La Plata"
+        elevation="14059"
+        lat="37.627285"
+        long="-107.595894"
+        range="San Juan"
+        rank="39" />
+    <mountain
+        name="Handies Peak"
+        county="Hinsdale"
+        elevation="14048"
+        lat="37.913021"
+        long="-107.504478"
+        range="San Juan"
+        rank="40" />
+    <mountain
+        name="Culebra Peak"
+        county="Costilla"
+        elevation="14047"
+        lat="37.122173"
+        long="-105.185593"
+        range="Sangre de Cristo"
+        rank="41" />
+    <mountain
+        name="Ellingwood Point"
+        county="Alamosa, Huerfano"
+        elevation="14042"
+        lat="37.582508"
+        long="-105.492569"
+        range="Sangre de Cristo"
+        rank="42" />
+    <mountain
+        name="Mt. Lindsey"
+        county="Costilla"
+        elevation="14042"
+        lat="37.583801"
+        long="-105.444763"
+        range="Sangre de Cristo"
+        rank="43" />
+    <mountain
+        name="Little Bear Peak"
+        county="Alamosa, Costilla"
+        elevation="14037"
+        lat="37.566624"
+        long="-105.497162"
+        range="Sangre de Cristo"
+        rank="44" />
+    <mountain
+        name="Mt. Sherman"
+        county="Lake, Park"
+        elevation="14036"
+        lat="39.225006"
+        long="-106.169945"
+        range="Mosquito"
+        rank="45" />
+    <mountain
+        name="Redcloud Peak"
+        county="Hinsdale"
+        elevation="14034"
+        lat="37.940880"
+        long="-107.421654"
+        range="San Juan"
+        rank="46" />
+    <mountain
+        name="Pyramid Peak"
+        county="Pitkin"
+        elevation="14018"
+        lat="39.071545"
+        long="-106.950188"
+        range="Elk"
+        rank="47" />
+    <mountain
+        name="Wilson Peak"
+        county="San Miguel"
+        elevation="14017"
+        lat="37.859913"
+        long="-107.984795"
+        range="San Juan"
+        rank="48" />
+    <mountain
+        name="Wetterhorn Peak"
+        county="Ouray, Hinsdale"
+        elevation="14015"
+        lat="38.060593"
+        long="-107.510834"
+        range="San Juan"
+        rank="49" />
+    <mountain
+        name="San Luis Peak"
+        county="Saguache"
+        elevation="14014"
+        lat="37.986897"
+        long="-106.931389"
+        range="San Juan"
+        rank="50" />
+    <mountain
+        name="Mt. of the Holy Cross"
+        county="Eagle"
+        elevation="14005"
+        lat="39.466713"
+        long="-106.481766"
+        range="Sawatch"
+        rank="51" />
+    <mountain
+        name="Huron Peak"
+        county="Chaffee"
+        elevation="14003"
+        lat="38.945423"
+        long="-106.438126"
+        range="Sawatch"
+        rank="52" />
+    <mountain
+        name="Sunshine Peak"
+        county="Hinsdale"
+        elevation="14001"
+        lat="37.922604"
+        long="107.425606"
+        range="San Juan"
+        rank="53" />
+    <mountain
+        name="Mt. Cameron"
+        county="Park"
+        elevation="14238"
+        lat="39.346844"
+        long="-106.118576"
+        range="Mosquito"
+        rank="-1" />
+    <mountain
+        name="El Diente Peak"
+        county="Dolores"
+        elevation="14159"
+        lat="37.839275"
+        long="-108.005219"
+        range="San Juan"
+        rank="-1" />
+    <mountain
+        name="Conundrum Peak"
+        county="Pitkin"
+        elevation="14060"
+        lat="39.01514"
+        long="-106.863281"
+        range="Elk"
+        rank="-1" />
+    <mountain
+        name="North Eolus"
+        county="La Plata"
+        elevation="14039"
+        lat="37.625416"
+        long="-107.620995"
+        range="San Juan"
+        rank="-1" />
+     <mountain
+        name="North Maroon Peak"
+        county="Pitkin"
+        elevation="14014"
+        lat="39.076077"
+        long="-106.987267"
+        range="Elk"
+        rank="-1" />
+</mountains>
