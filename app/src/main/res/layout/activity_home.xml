@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/longs"
+    android:padding="25dp" >
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:max="53" />
+
+    <TextView
+        android:id="@+id/peak_stats1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:maxLines="1" />
+    
+   <TextView
+        android:id="@+id/peak_stats2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/peak_stats3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|center_horizontal"
+        android:maxLines="1"
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/button_new"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:onClick="showBagNewPeak"
+        android:text="@string/bag_new_peak" />
+    
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/button_new"
+        android:onClick="showAddOldPeak"
+        android:text="@string/bag_old_peak" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/button_new"
+        android:onClick="showRegister"
+        android:text="@string/register" />
+    
+
+
+</LinearLayout>
