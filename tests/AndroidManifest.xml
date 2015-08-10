@@ -1,61 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cpiekarski.fourteeners"
+    package="com.cpiekarski.fourteeners.test"
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="19"
-        android:targetSdkVersion="19" />
-
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <uses-feature android:name="android.hardware.location" android:required="true" />
+    <uses-sdk android:minSdkVersion="19" />
     
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:required="false"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:required="false"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
-    
-    
-    
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.cpiekarski.fourteeners" />
 
     <application
-        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".activities.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
-            android:name=".activities.AddBagActivity"
-            android:label="@string/title_activity_add_a_bag"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".activities.HomeActivity"
-            android:label="@string/title_activity_register"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.SETTINGS" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".activities.HikeActivity"
-            android:label="@string/title_activity_register"
-            android:screenOrientation="portrait" >
-        </activity>
+        android:label="@string/app_name" >
+        <uses-library android:name="android.test.runner" />
     </application>
 
 </manifest>
