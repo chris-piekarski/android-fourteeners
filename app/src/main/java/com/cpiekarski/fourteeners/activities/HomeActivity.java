@@ -11,12 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cpiekarski.fourteeners.R;
+import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.Register;
 import com.cpiekarski.fourteeners.register.RegisterEntry;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class HomeActivity extends Activity {
-    
+    private Tracker mTracker;
+
     private TextView mStats1;
     private TextView mStats2;
     private TextView mStats3;
@@ -64,6 +68,10 @@ public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SummitRegister application = (SummitRegister) getApplication();
+        mTracker = application.getDefaultTracker();
+
         setContentView(R.layout.activity_home);
         
         mStats1 = (TextView) findViewById(R.id.peak_stats1);
@@ -94,6 +102,8 @@ public class HomeActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        mTracker.setScreenName(HomeActivity.class.getCanonicalName());
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         refreshStats();
     }
     

@@ -16,9 +16,12 @@ import android.app.LoaderManager;
 import android.widget.ListView;
 
 import com.cpiekarski.fourteeners.R;
+import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.RegisterHelper;
 import com.cpiekarski.fourteeners.utils.RegisterDate;
 import com.cpiekarski.fourteeners.utils.SRLOG;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,8 +35,8 @@ public class RegisterActivity extends Activity /*implements
     private final String TAG = "RegisterHistoryActivity";
     
     private SimpleCursorAdapter mAdapter;
-    
- 
+    private Tracker mTracker;
+
     private class MyAdapter extends SimpleCursorAdapter {
         public MyAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
             super(context, layout, c, from, to, flags);
@@ -69,13 +72,10 @@ public class RegisterActivity extends Activity /*implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        
-//        String[] stringArray = new String[20];
-//        for(int i = 0 ; i < 20; ++i) {
-//            stringArray[i] = "Peak number " + i;
-//        }
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.history_list_view, stringArray);
-//        
+
+        SummitRegister application = (SummitRegister) getApplication();
+        mTracker = application.getDefaultTracker();
+
         String[] fromCols = {RegisterHelper.MNT_NAME, RegisterHelper.PEEK_ELEVATION, RegisterHelper.SUMMIT, RegisterHelper.START_TIME};
         int[] toViews = {R.id.peak_name, R.id.peak_elevation, R.id.peak_summit, R.id.peak_summit_date};
         
@@ -89,6 +89,13 @@ public class RegisterActivity extends Activity /*implements
         //android.R.drawable.divider_horizontal_dim_dark
         //android.R.drawable.divider_horizontal_dark
         listView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTracker.setScreenName(RegisterActivity.class.getCanonicalName());
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
     
     @Override
