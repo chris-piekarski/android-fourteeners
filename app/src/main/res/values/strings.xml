@@ -5,7 +5,7 @@
     <string name="title_activity_history">Bag History</string>
     <string name="title_activity_add_a_bag">Add Peak</string>
     <string name="title_activity_help">Register Help</string>
-    <string name="title_activity_leave_no_trace">Leave No Trace - Principles</string>
+    <string name="title_activity_leave_no_trace">Leave No Trace - Seven Principles</string>
     <string name="title_activity_license">Software License</string>
     <string name="header_copyright"><u>Copyright</u></string>
     <string name="help">Help</string>
@@ -19,4 +19,49 @@
 
     <!-- Leave no trace -->
     <string name="lnt_copyright">All information and content in the following works are copyrighted:  Leave No Trace Skills and Ethics Series, All Leave No Trace Informational Brochures, Handbooks, PEAK and PEAK-Teen, 101 Ways to Teach Leave No Trace, Training Manuals, Master Educator Handbook and other publications. Please contact the Leave No Trace Center for Outdoor Ethics if you are interested in using a portion of these texts. - See more at: https://lnt.org/about/use-logo-seven-principles-and-more#sthash.ekjUo7TE.dpuf</string>
+    <string name="lnt_principle_one"><b>Plan Ahead and Prepare</b>\n
+                    * Know the regulations and special concerns for the area you\'ll visit.\n
+                    * Prepare for extreme weather, hazards, and emergencies.\n
+                    * Schedule your trip to avoid times of high use.\n
+                    * Visit in small groups when possible. Consider splitting larger groups into smaller groups.\n
+                    * Repackage food to minimize waste.\n
+                    * Use a map and compass to eliminate the use of marking paint, rock cairns or flagging.\n</string>
+    <string name="lnt_principle_two"><b>Travel and Camp on Durable Surfaces</b>\n
+                    * Durable surfaces include established trails and campsites, rock, gravel, dry grasses or snow.\n
+                    * Protect riparian areas by camping at least 200 feet from lakes and streams.\n
+                    * Good campsites are found, not made. Altering a site is not necessary.\n
+                    <u>In popular areas:</u>\n
+                        * Concentrate use on existing trails and campsites.\n
+                        * Walk single file in the middle of the trail, even when wet or muddy.\n
+                        * Keep campsites small. Focus activity in areas where vegetation is absent.\n
+                    <u>In pristine areas:</u>\n
+                        * Disperse use to prevent the creation of campsites and trails.\n
+                        * Avoid places where impacts are just beginning.\n</string>
+    <string name="lnt_principle_three"><b>Dispose of Waste Properly</b>\n
+                    * Pack it in, pack it out. Inspect your campsite and rest areas for trash or spilled foods. Pack out all trash, leftover food and litter.\n
+                    * Deposit solid human waste in catholes dug 6 to 8 inches deep, at least 200 feet from water, camp and trails. Cover and disguise the cathole when finished.\n
+                    * Pack out toilet paper and hygiene products.\n
+                    * To wash yourself or your dishes, carry water 200 feet away from streams or lakes and use small amounts of biodegradable soap. Scatter strained dishwater.\n</string>
+    <string name="lnt_principle_four"><b>Leave What You Find</b>\n
+                    * Preserve the past: examine, but do not touch cultural or historic structures and artifacts.\n
+                    * Leave rocks, plants and other natural objects as you find them.\n
+                    * Avoid introducing or transporting non-native species.\n
+                    * Do not build structures, furniture, or dig trenches.\n</string>
+    <string name="lnt_principle_five"><b>Minimize Campfire Impacts</b>\n
+                    * Campfires can cause lasting impacts to the backcountry. Use a lightweight stove for cooking and enjoy a candle lantern for light.\n
+                    * Where fires are permitted, use established fire rings, fire pans, or mound fires.\n
+                    * Keep fires small. Only use sticks from the ground that can be broken by hand.\n
+                    * Burn all wood and coals to ash, put out campfires completely, then scatter cool ashes.\n</string>
+    <string name="lnt_principle_six"><b>Respect Wildlife</b>\n
+                    * Observe wildlife from a distance. Do not follow or approach them.\n
+                    * Never feed animals. Feeding wildlife damages their health, alters natural behaviors, and exposes them to predators and other dangers.\n
+                    * Protect wildlife and your food by storing rations and trash securely.\n
+                    * Control pets at all times, or leave them at home.\n
+                    * Avoid wildlife during sensitive times: mating, nesting, raising young, or winter.\n</string>
+    <string name="lnt_principle_seven"><b>Be Considerate of Other Visitors</b>\n
+                    * Respect other visitors and protect the quality of their experience.\n
+                    * Be courteous. Yield to other users on the trail.\n
+                    * Step to the downhill side of the trail when encountering pack stock.\n
+                    * Take breaks and camp away from trails and other visitors.\n
+                    * Let nature\'s sounds prevail. Avoid loud voices and noises.\n</string>
 </resources>

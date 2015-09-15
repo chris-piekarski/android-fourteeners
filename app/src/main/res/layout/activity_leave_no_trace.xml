@@ -1,29 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="25dp" >
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/copyright_title"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:textSize="12dp"
-        android:text="@string/header_copyright"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="25dp">
 
-    <TextView
-        android:id="@+id/lnt_copyright"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:textSize="12dp"
-        android:linksClickable="true"
-        android:autoLink="web"
-        android:text="@string/lnt_copyright"
-        android:textColor="#000000"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Leave No Trace Logo"
+            android:src="@drawable/leave_no_trace_logo" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/lnt_prin1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_one"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/lnt_prin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_two"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/lnt_prin3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_three"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/lnt_prin4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_four"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/lnt_prin5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_five"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/lnt_prin6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_six"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/lnt_prin7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_principle_seven"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/copyright_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@string/header_copyright"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lnt_copyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="left"
+            android:linksClickable="true"
+            android:text="@string/lnt_copyright"
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+</ScrollView>
