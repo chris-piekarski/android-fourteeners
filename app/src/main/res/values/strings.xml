@@ -17,7 +17,7 @@
     <string name="peak">Peak</string>
     <string name="leave_no_trace">Leave No Trace</string>
 
-    <!-- Leave no trace -->
+    <!-- Leave no trace strings -->
     <string name="lnt_copyright">All information and content in the following works are copyrighted:  Leave No Trace Skills and Ethics Series, All Leave No Trace Informational Brochures, Handbooks, PEAK and PEAK-Teen, 101 Ways to Teach Leave No Trace, Training Manuals, Master Educator Handbook and other publications. Please contact the Leave No Trace Center for Outdoor Ethics if you are interested in using a portion of these texts. - See more at: https://lnt.org/about/use-logo-seven-principles-and-more#sthash.ekjUo7TE.dpuf</string>
     <string name="lnt_principle_one"><b>Plan Ahead and Prepare</b>\n
                     * Know the regulations and special concerns for the area you\'ll visit.\n
@@ -64,4 +64,14 @@
                     * Step to the downhill side of the trail when encountering pack stock.\n
                     * Take breaks and camp away from trails and other visitors.\n
                     * Let nature\'s sounds prevail. Avoid loud voices and noises.\n</string>
+
+    <!-- License Strings -->
+    <string name="license_header">This software is open source. Community contributions relating to
+        feature requests, user experience design and software development are
+        <b>encouraged and greatly appreciated.</b></string>
+    <string name="license_github_link">https://github.com/chris-piekarski/android-fourteeners</string>
+    <string name="license_legal">GNU GENERAL PUBLIC LICENSE\n
+        Version 3, 29 June 2007\n
+        THERE IS NO WARRANTY FOR THE PROGRAM\n</string>
+    <string name="license_footer">Have a <u>safe</u> and <b>enjoyable</b> hike!</string>
 </resources>
