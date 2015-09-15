@@ -94,8 +94,6 @@ public class RegisterActivity extends Activity /*implements
     @Override
     protected void onResume() {
         super.onResume();
-        mTracker.setScreenName(RegisterActivity.class.getCanonicalName());
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
     
     @Override

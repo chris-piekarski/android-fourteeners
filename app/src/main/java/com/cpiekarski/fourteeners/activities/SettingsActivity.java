@@ -49,8 +49,6 @@ public class SettingsActivity extends PreferenceActivity {
         super.onPostCreate(savedInstanceState);
         SummitRegister application = (SummitRegister) getApplication();
         mTracker = application.getDefaultTracker();
-        mTracker.setScreenName(HikeActivity.class.getCanonicalName());
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         //setupSimplePreferencesScreen();
     }
 

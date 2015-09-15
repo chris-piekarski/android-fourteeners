@@ -102,8 +102,6 @@ public class HomeActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        mTracker.setScreenName(HomeActivity.class.getCanonicalName());
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         refreshStats();
     }
     

@@ -28,11 +28,13 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.cpiekarski.fourteeners.R;
+import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.RegisterEntry;
 import com.cpiekarski.fourteeners.utils.Mountain;
 import com.cpiekarski.fourteeners.utils.Mountains;
 import com.cpiekarski.fourteeners.utils.RegisterDate;
 import com.cpiekarski.fourteeners.utils.SRLOG;
+import com.google.android.gms.analytics.Tracker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,7 +61,9 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
     private RegisterDate mStartDate;
     private RegisterDate mEndDate;
     private String mProofPath;
-    
+    private Tracker mTracker;
+
+
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private URI fileUri;
     
@@ -71,7 +75,7 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbag);
-        
+
         mRanges = (Spinner) findViewById(R.id.ranges_spinner);
         mPeaks = (Spinner) findViewById(R.id.peak_spinner);
         mStartTime = (TextView) findViewById(R.id.start_time);

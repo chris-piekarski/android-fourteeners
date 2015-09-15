@@ -28,8 +28,6 @@ public class HikeActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        mTracker.setScreenName(HikeActivity.class.getCanonicalName());
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
     
     @Override
