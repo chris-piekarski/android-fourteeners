@@ -44,6 +44,16 @@ public class HomeActivity extends Activity {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);    
     }
+
+    private void showLicense() {
+        Intent intent = new Intent(this, LicenseActivity.class);
+        startActivity(intent);
+    }
+
+    private void showLeaveNoTrace() {
+        Intent intent = new Intent(this, LeaveNoTraceActivity.class);
+        startActivity(intent);
+    }
     
     private void showSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
@@ -116,6 +126,12 @@ public class HomeActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.settings:
                 showSettings();
+                return true;
+            case R.id.leave_no_trace:
+                showLeaveNoTrace();
+                return true;
+            case R.id.license:
+                showLicense();
                 return true;
             case R.id.help:
                 showHelp();

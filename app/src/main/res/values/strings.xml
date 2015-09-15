@@ -4,11 +4,16 @@
     <string name="title_activity_register">14er Summit Register</string>
     <string name="title_activity_history">Bag History</string>
     <string name="title_activity_add_a_bag">Add Peak</string>
+    <string name="title_activity_help">Register Help</string>
+    <string name="title_activity_leave_no_trace">Leave No Trace - Principles</string>
+    <string name="title_activity_license">Software License</string>
     <string name="help">Help</string>
+    <string name="license">License</string>
     <string name="register">Register</string>
     <string name="bag_new_peak">Hike</string>
     <string name="bag_old_peak">Add</string>
     <string name="range">Range</string>
     <string name="peak">Peak</string>
-    
+    <string name="leave_no_trace">Leave No Trace</string>
+
 </resources>

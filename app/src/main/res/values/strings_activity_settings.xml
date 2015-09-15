@@ -18,4 +18,7 @@
 	<string name="pref_default_ice_email">jimmy@hoffa.com</string>
 	<string name="pref_title_ice_number">Phone number</string>
 	<string name="pref_default_ice_number">303-555-5555</string>
+
+    <!-- Leave no trace -->
+    <string name="lnt_copyright">All information and content in the following works are copyrighted:  Leave No Trace Skills and Ethics Series, All Leave No Trace Informational Brochures, Handbooks, PEAK and PEAK-Teen, 101 Ways to Teach Leave No Trace, Training Manuals, Master Educator Handbook and other publications. Please contact the Leave No Trace Center for Outdoor Ethics if you are interested in using a portion of these texts. - See more at: https://lnt.org/about/use-logo-seven-principles-and-more#sthash.ekjUo7TE.dpuf</string>
 </resources>

@@ -56,6 +56,21 @@
             android:label="@string/title_activity_register"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activities.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.LicenseActivity"
+            android:label="@string/title_activity_license"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.LeaveNoTraceActivity"
+            android:label="@string/title_activity_leave_no_trace"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
