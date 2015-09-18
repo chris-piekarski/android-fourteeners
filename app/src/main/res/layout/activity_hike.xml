@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <TextView
+        android:id="@+id/pick_header"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:linksClickable="true"
+        android:text="@string/pick_a_mountain"
+        android:textColor="#000000"
+        android:textSize="15dp" />
+
+    <ListView
+        android:id="@+id/nearest_listview"
+        android:layout_width="match_parent"
+        android:dividerHeight="5dp"
+        android:layout_height="80dp"
+        android:gravity="bottom"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/nearest_listview"
+        android:onClick="manualPick"
+        android:text="@string/pick_manual" />
+
+</LinearLayout>

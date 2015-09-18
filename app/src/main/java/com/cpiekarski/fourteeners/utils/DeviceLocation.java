@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -211,7 +212,7 @@ public class DeviceLocation {
     }
     
     /**
-     * Given our last received location, provide a LinkedList of Mountains with max
+     * Given our last received location, provide a ArrayList of Mountains with max
      * size of howMany.
      * 
      * O(n log n) where N is the number of mountains
@@ -219,8 +220,8 @@ public class DeviceLocation {
      * @param howMany Maximum number of nearest Mountains to return.
      * @return sorted list of nearest Mountains
      */
-    public final LinkedList<Mountain> getNearestMountains(int howMany) {
-        LinkedList<Mountain> l = new LinkedList<Mountain>();
+    public final ArrayList<Mountain> getNearestMountains(int howMany) {
+        ArrayList<Mountain> l = new ArrayList<Mountain>();
         final Location loc = mLastLocation;
 
         TreeSet<Mountain> mntTree = new TreeSet<Mountain>(new Comparator<Mountain>() {

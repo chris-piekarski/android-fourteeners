@@ -9,13 +9,15 @@
     <string name="title_activity_license">Software License</string>
     <string name="header_copyright"><u>Copyright</u></string>
     <string name="help">Help</string>
-    <string name="license">License</string>
+    <string name="license">About/License</string>
     <string name="register">Register</string>
     <string name="bag_new_peak">Hike</string>
     <string name="bag_old_peak">Add</string>
     <string name="range">Range</string>
     <string name="peak">Peak</string>
     <string name="leave_no_trace">Leave No Trace</string>
+    <string name="pick_manual">Manual Pick</string>
+    <string name="pick_a_mountain">Given your location, these are the closest 14ers</string>
 
     <!-- Leave no trace strings -->
     <string name="lnt_copyright">All information and content in the following works are copyrighted:  Leave No Trace Skills and Ethics Series, All Leave No Trace Informational Brochures, Handbooks, PEAK and PEAK-Teen, 101 Ways to Teach Leave No Trace, Training Manuals, Master Educator Handbook and other publications. Please contact the Leave No Trace Center for Outdoor Ethics if you are interested in using a portion of these texts. - See more at: https://lnt.org/about/use-logo-seven-principles-and-more#sthash.ekjUo7TE.dpuf</string>
