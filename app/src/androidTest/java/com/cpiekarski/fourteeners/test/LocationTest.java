@@ -21,6 +21,7 @@ import com.cpiekarski.fourteeners.utils.DeviceLocation.LocationType;
 
 import junit.framework.Assert;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import android.util.Log;
@@ -243,7 +244,7 @@ public class LocationTest extends AndroidTestCase {
         
         Thread.sleep(1000);
         
-        LinkedList<Mountain> nearDenver = mLocation.getNearestMountains(5);
+        ArrayList<Mountain> nearDenver = mLocation.getNearestMountains(5);
         
         removeMockProvider();
         
@@ -276,7 +277,7 @@ public class LocationTest extends AndroidTestCase {
         
         Thread.sleep(1000);
         
-        LinkedList<Mountain> nearVail = mLocation.getNearestMountains(10);
+        ArrayList<Mountain> nearVail = mLocation.getNearestMountains(10);
         
         removeMockProvider();
         
