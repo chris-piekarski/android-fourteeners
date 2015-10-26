@@ -56,7 +56,8 @@ public class DeviceLocation {
         
         // Acquire a reference to the system Location Manager
         mLocationManager = (LocationManager) mCtx.getSystemService(Context.LOCATION_SERVICE);
-    
+        mLastLocation = mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+
         // Define a listener that responds to location updates
         mLocationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
