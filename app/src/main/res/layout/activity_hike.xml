@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/pick_header"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="40dp"
         android:autoLink="web"
         android:gravity="center"
         android:linksClickable="true"

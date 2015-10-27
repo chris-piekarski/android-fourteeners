@@ -14,6 +14,7 @@ import com.cpiekarski.fourteeners.R;
 import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.utils.DeviceLocation;
 import com.cpiekarski.fourteeners.utils.Mountain;
+import com.cpiekarski.fourteeners.utils.SRLOG;
 import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class HikeActivity extends Activity {
     DeviceLocation dl;
     private Tracker mTracker;
     private MyAdapter mAdapter;
+    private final String TAG = "HikeActivity";
 
     private class MyAdapter extends ArrayAdapter<Mountain> {
         public MyAdapter(Context context, int resource, ArrayList<Mountain> objects) {
@@ -37,10 +39,10 @@ public class HikeActivity extends Activity {
             }
 
             TextView name = (TextView) convertView.findViewById(R.id.peak_name);
-            TextView elevation = (TextView) convertView.findViewById(R.id.peak_elevation);
+            TextView elevation = (TextView) convertView.findViewById(R.id.peak_elevation_pick);
 
             name.setText(m.getName());
-            elevation.setText(m.getElevation());
+            elevation.setText(String.valueOf(m.getElevation()));
             return convertView;
         }
     }
@@ -59,12 +61,18 @@ public class HikeActivity extends Activity {
 
     }
 
+    public void manualPick(View view) {
+        SRLOG.v(TAG, "Manual pick clicked");
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         ArrayList<Mountain> m = dl.getNearestMountains(10);
+
         mAdapter = new MyAdapter(this, R.layout.hike_list_view,m);
-        ListView listView = (ListView) findViewById(R.id.history_listview);
+        ListView listView = (ListView) findViewById(R.id.nearest_listview);
+        listView.setAdapter(mAdapter);
     }
     
     @Override
