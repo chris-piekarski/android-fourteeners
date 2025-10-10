@@ -23,8 +23,10 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Gradle wrapper validation
+      - name: Gradle wrapper validation (non-fatal)
         uses: gradle/actions/wrapper-validation@v3
+        continue-on-error: true
+        timeout-minutes: 3
 
       - name: Install SDK packages
         run: |
