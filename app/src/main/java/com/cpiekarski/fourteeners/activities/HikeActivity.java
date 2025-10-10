@@ -15,13 +15,13 @@ import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.utils.DeviceLocation;
 import com.cpiekarski.fourteeners.utils.Mountain;
 import com.cpiekarski.fourteeners.utils.SRLOG;
-import com.google.android.gms.analytics.Tracker;
+// Analytics removed
 
 import java.util.ArrayList;
 
 public class HikeActivity extends Activity {
     DeviceLocation dl;
-    private Tracker mTracker;
+    
     private MyAdapter mAdapter;
     private final String TAG = "HikeActivity";
 
@@ -53,7 +53,6 @@ public class HikeActivity extends Activity {
         setContentView(R.layout.activity_hike);
 
         SummitRegister application = (SummitRegister) getApplication();
-        mTracker = application.getDefaultTracker();
 
         dl = new DeviceLocation(this);
         dl.getPassiveUpdates();

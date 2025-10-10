@@ -16,8 +16,6 @@ import android.preference.PreferenceManager;
 import com.cpiekarski.fourteeners.R;
 import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.utils.SRLOG;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.List;
 
@@ -41,14 +39,13 @@ public class SettingsActivity extends PreferenceActivity {
      */
     private static final boolean ALWAYS_SIMPLE_PREFS = false;
     private static final String TAG = "RegisterSettingsActivity";
-    private Tracker mTracker;
+    
 
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         SummitRegister application = (SummitRegister) getApplication();
-        mTracker = application.getDefaultTracker();
         //setupSimplePreferencesScreen();
     }
 

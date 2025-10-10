@@ -1,6 +1,7 @@
 package com.cpiekarski.fourteeners.activities;
 
 import android.app.Activity;
+import android.os.Build;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,12 +15,10 @@ import com.cpiekarski.fourteeners.R;
 import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.Register;
 import com.cpiekarski.fourteeners.register.RegisterEntry;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+// Analytics removed
 
 
 public class HomeActivity extends Activity {
-    private Tracker mTracker;
 
     private TextView mStats1;
     private TextView mStats2;
@@ -80,7 +79,6 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         SummitRegister application = (SummitRegister) getApplication();
-        mTracker = application.getDefaultTracker();
 
         setContentView(R.layout.activity_home);
         
@@ -106,7 +104,11 @@ public class HomeActivity extends Activity {
         mStats2.setText("Total summits: "+ts);
         mStats3.setText("Last summit: "+lastSummit);
         
-        mProgress.setProgress(tus);
+        if (Build.VERSION.SDK_INT >= 24) {
+            mProgress.setProgress(tus, true);
+        } else {
+            mProgress.setProgress(tus);
+        }
     }
     
     @Override

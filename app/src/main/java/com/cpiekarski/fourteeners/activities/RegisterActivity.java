@@ -20,8 +20,7 @@ import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.RegisterHelper;
 import com.cpiekarski.fourteeners.utils.RegisterDate;
 import com.cpiekarski.fourteeners.utils.SRLOG;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+// Analytics removed
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,7 +34,6 @@ public class RegisterActivity extends Activity /*implements
     private final String TAG = "RegisterHistoryActivity";
     
     private SimpleCursorAdapter mAdapter;
-    private Tracker mTracker;
 
     private class MyAdapter extends SimpleCursorAdapter {
         public MyAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
@@ -74,7 +72,6 @@ public class RegisterActivity extends Activity /*implements
         setContentView(R.layout.activity_register);
 
         SummitRegister application = (SummitRegister) getApplication();
-        mTracker = application.getDefaultTracker();
 
         String[] fromCols = {RegisterHelper.MNT_NAME, RegisterHelper.PEEK_ELEVATION, RegisterHelper.SUMMIT, RegisterHelper.START_TIME};
         int[] toViews = {R.id.peak_name, R.id.peak_elevation, R.id.peak_summit, R.id.peak_summit_date};
