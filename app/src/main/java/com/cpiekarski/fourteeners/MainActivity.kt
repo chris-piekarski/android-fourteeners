@@ -12,6 +12,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -32,6 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun HomeScreen() {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -40,10 +44,17 @@ private fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Summit Register", style = MaterialTheme.typography.headlineMedium)
-        Button(onClick = { /* TODO */ }, modifier = Modifier.padding(top = 16.dp)) {
+        Button(onClick = {
+            // Open 14ers.com app/site for logging a route
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.14ers.com"))
+            context.startActivity(intent)
+        }, modifier = Modifier.padding(top = 16.dp)) {
             Text("Log Summit Attempt")
         }
-        Button(onClick = { /* TODO */ }, modifier = Modifier.padding(top = 8.dp)) {
+        Button(onClick = {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.14ers.com/php14ers/13ers.php?type=14ers"))
+            context.startActivity(intent)
+        }, modifier = Modifier.padding(top = 8.dp)) {
             Text("View History")
         }
     }
