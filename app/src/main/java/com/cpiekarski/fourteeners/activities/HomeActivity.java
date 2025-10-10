@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cpiekarski.fourteeners.R;
-import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.Register;
 import com.cpiekarski.fourteeners.register.RegisterEntry;
 // Analytics removed
@@ -78,7 +77,7 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SummitRegister application = (SummitRegister) getApplication();
+        // no-op: Application subclass removed
 
         setContentView(R.layout.activity_home);
         

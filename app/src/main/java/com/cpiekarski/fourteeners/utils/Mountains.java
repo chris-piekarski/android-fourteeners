@@ -6,7 +6,6 @@ import android.content.res.XmlResourceParser;
 import android.util.Log;
 
 import com.cpiekarski.fourteeners.R;
-import com.cpiekarski.fourteeners.SummitRegister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,7 @@ public class Mountains {
         mCtx = context;
         mRanges = new TreeMap<String, ArrayList<String>>();
 
-        SummitRegister application = (SummitRegister) mCtx.getApplicationContext();
+        // no-op: Application subclass removed
     }
     
     public String[] getRanges() {

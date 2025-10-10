@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cpiekarski.fourteeners.R;
-import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.utils.DeviceLocation;
 import com.cpiekarski.fourteeners.utils.Mountain;
 import com.cpiekarski.fourteeners.utils.SRLOG;
@@ -52,7 +51,7 @@ public class HikeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hike);
 
-        SummitRegister application = (SummitRegister) getApplication();
+        // no-op: Application subclass removed
 
         dl = new DeviceLocation(this);
         dl.getPassiveUpdates();
