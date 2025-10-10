@@ -7,9 +7,6 @@ import android.util.Log;
 
 import com.cpiekarski.fourteeners.R;
 import com.cpiekarski.fourteeners.SummitRegister;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.analytics.StandardExceptionParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,7 @@ public class Mountains {
     private final String TAG = "Mountains";
     private TreeMap<String, Mountain> mMnts;
     private Context mCtx;
-    private Tracker mTracker;
+    // Analytics removed
 
 
     private TreeMap<String, ArrayList<String>> mRanges;
@@ -52,7 +49,6 @@ public class Mountains {
         mRanges = new TreeMap<String, ArrayList<String>>();
 
         SummitRegister application = (SummitRegister) mCtx.getApplicationContext();
-        mTracker = application.getDefaultTracker();
     }
     
     public String[] getRanges() {
@@ -148,12 +144,7 @@ public class Mountains {
             }
         } catch (Exception e) {
             SRLOG.e(TAG, e.toString());
-            mTracker.send(new HitBuilders.ExceptionBuilder()
-                            .setDescription(new StandardExceptionParser(mCtx, null)
-                                            .getDescription(Thread.currentThread().getName(), e))
-                            .setFatal(false)
-                            .build()
-            );
+            // no-op
         } finally {
             xrp.close();
             SRLOG.i(TAG, "Fourteener data parsed");

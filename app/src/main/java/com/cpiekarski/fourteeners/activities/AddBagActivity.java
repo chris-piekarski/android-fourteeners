@@ -34,7 +34,7 @@ import com.cpiekarski.fourteeners.utils.Mountain;
 import com.cpiekarski.fourteeners.utils.Mountains;
 import com.cpiekarski.fourteeners.utils.RegisterDate;
 import com.cpiekarski.fourteeners.utils.SRLOG;
-import com.google.android.gms.analytics.Tracker;
+// Analytics removed
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -61,7 +61,7 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
     private RegisterDate mStartDate;
     private RegisterDate mEndDate;
     private String mProofPath;
-    private Tracker mTracker;
+    
 
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
