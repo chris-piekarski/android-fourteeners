@@ -23,6 +23,9 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses
+
       - name: Gradle wrapper validation (non-fatal)
         uses: gradle/actions/wrapper-validation@v3
         continue-on-error: true
@@ -32,17 +35,16 @@ jobs:
         run: |
           sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Build
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
         with:
-          arguments: assembleDebug --stacktrace
+          validate-wrappers: false
+
+      - name: Build
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Unit tests
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: testDebugUnitTest --stacktrace
+        run: ./gradlew testDebugUnitTest --stacktrace
 
       - name: Lint
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: lintDebug --stacktrace
+        run: ./gradlew lintDebug --stacktrace

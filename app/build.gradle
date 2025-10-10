@@ -11,7 +11,8 @@ android {
 
     defaultConfig {
         applicationId "com.cpiekarski.fourteeners"
-        minSdk 24
+        // Support only the latest three Android versions (13–15)
+        minSdk 33
         targetSdk 35
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
