@@ -14,7 +14,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
 import com.cpiekarski.fourteeners.R;
-import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.utils.SRLOG;
 
 import java.util.List;
@@ -45,7 +44,7 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        SummitRegister application = (SummitRegister) getApplication();
+        // no-op: Application subclass removed
         //setupSimplePreferencesScreen();
     }
 

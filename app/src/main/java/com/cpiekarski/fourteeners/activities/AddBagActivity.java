@@ -28,7 +28,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.cpiekarski.fourteeners.R;
-import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.RegisterEntry;
 import com.cpiekarski.fourteeners.utils.Mountain;
 import com.cpiekarski.fourteeners.utils.Mountains;

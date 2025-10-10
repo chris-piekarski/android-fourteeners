@@ -41,9 +41,7 @@ android {
         compose true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.15'
-    }
+    // Compose compiler version is managed by the Kotlin Compose plugin; no manual override
 
     packaging {
         resources {

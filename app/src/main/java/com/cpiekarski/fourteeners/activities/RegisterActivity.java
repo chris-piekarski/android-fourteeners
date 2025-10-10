@@ -16,7 +16,6 @@ import android.app.LoaderManager;
 import android.widget.ListView;
 
 import com.cpiekarski.fourteeners.R;
-import com.cpiekarski.fourteeners.SummitRegister;
 import com.cpiekarski.fourteeners.register.RegisterHelper;
 import com.cpiekarski.fourteeners.utils.RegisterDate;
 import com.cpiekarski.fourteeners.utils.SRLOG;
@@ -71,7 +70,7 @@ public class RegisterActivity extends Activity /*implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        SummitRegister application = (SummitRegister) getApplication();
+        // no-op: Application subclass removed
 
         String[] fromCols = {RegisterHelper.MNT_NAME, RegisterHelper.PEEK_ELEVATION, RegisterHelper.SUMMIT, RegisterHelper.START_TIME};
         int[] toViews = {R.id.peak_name, R.id.peak_elevation, R.id.peak_summit, R.id.peak_summit_date};
