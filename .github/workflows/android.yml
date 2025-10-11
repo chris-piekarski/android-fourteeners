@@ -33,7 +33,7 @@ jobs:
 
       - name: Install SDK packages
         run: |
-          sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          sdkmanager --install "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
