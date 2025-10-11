@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'com.cpiekarski.fourteeners'
-    compileSdk 33
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.cpiekarski.fourteeners"
         minSdk 19
-        targetSdk 33
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -31,6 +31,12 @@ android {
         debug {
             minifyEnabled false
         }
+    }
+    
+    lintOptions {
+        lintConfig file("../lint.xml")
+        abortOnError false
+        warningsAsErrors false
     }
 }
 

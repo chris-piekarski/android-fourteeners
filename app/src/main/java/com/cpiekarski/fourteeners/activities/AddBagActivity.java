@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -39,13 +38,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.channels.FileChannel;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 
 public class AddBagActivity extends Activity implements OnItemSelectedListener {
@@ -64,7 +58,6 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
 
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-    private URI fileUri;
     
     private File imageDir;
     
@@ -75,13 +68,13 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbag);
 
-        mRanges = (Spinner) findViewById(R.id.ranges_spinner);
-        mPeaks = (Spinner) findViewById(R.id.peak_spinner);
-        mStartTime = (TextView) findViewById(R.id.start_time);
-        mEndTime = (TextView) findViewById(R.id.end_time);
-        mDate = (TextView) findViewById(R.id.date);
-        mProof = (ImageView) findViewById(R.id.image_proof);
-        mNotes = (EditText) findViewById(R.id.notes);
+        mRanges = findViewById(R.id.ranges_spinner);
+        mPeaks = findViewById(R.id.peak_spinner);
+        mStartTime = findViewById(R.id.start_time);
+        mEndTime = findViewById(R.id.end_time);
+        mDate = findViewById(R.id.date);
+        mProof = findViewById(R.id.image_proof);
+        mNotes = findViewById(R.id.notes);
         
         mStartDate = new RegisterDate();
         mEndDate = new RegisterDate();
@@ -89,11 +82,11 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
         imageDir = getApplicationContext().getDir("proof", Context.MODE_PRIVATE); // create a directory to store images
 
         
-        peakAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list_item);
+        peakAdapter = new ArrayAdapter<>(this, R.layout.spinner_list_item);
         peakAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mPeaks.setAdapter(peakAdapter);
         
-        ArrayAdapter<String> rangeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list_item);
+        ArrayAdapter<String> rangeAdapter = new ArrayAdapter<>(this, R.layout.spinner_list_item);
         rangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rangeAdapter.add("All");
         rangeAdapter.addAll(Mountains.getInstance(this).getRanges());        
@@ -196,7 +189,7 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
         
         SRLOG.v(TAG, ""+imageDir);
         File imageFile = new File(imageDir, "blah.jpg");
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFile.toURI()); // set the image file name
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile)); // set the image file name
 
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
@@ -204,10 +197,15 @@ public class AddBagActivity extends Activity implements OnItemSelectedListener {
     
     public String getPath(Uri uri) {
         String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String result = cursor.getString(column_index);
+            cursor.close();
+            return result;
+        }
+        return null;
     }
     
     public int calculateInSampleSize(
