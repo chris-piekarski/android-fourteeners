@@ -61,7 +61,12 @@ public class DeviceLocation {
         // Acquire a reference to the system Location Manager
         mLocationManager = (LocationManager) mCtx.getSystemService(Context.LOCATION_SERVICE);
         if (hasLocationPermission()) {
-            mLastLocation = mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            try {
+                mLastLocation = mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            } catch (SecurityException se) {
+                SRLOG.w(TAG, "Missing location permission when getting last passive location", se);
+                mLastLocation = null;
+            }
         }
 
         // Define a listener that responds to location updates
@@ -134,7 +139,11 @@ public class DeviceLocation {
             SRLOG.w(TAG, "Location permission not granted; skipping network updates.");
             return;
         }
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener, mLooper);
+        try {
+            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener, mLooper);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when requesting network updates", se);
+        }
     }
     
     /**
@@ -145,7 +154,11 @@ public class DeviceLocation {
             SRLOG.w(TAG, "Location permission not granted; skipping GPS updates.");
             return;
         }
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_UPDATE_TIME, 0, mLocationListener, mLooper);
+        try {
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_UPDATE_TIME, 0, mLocationListener, mLooper);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when requesting GPS updates", se);
+        }
     }
     
     /**
@@ -156,7 +169,11 @@ public class DeviceLocation {
             SRLOG.w(TAG, "Location permission not granted; skipping passive updates.");
             return;
         }
-        mLocationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, mLocationListener, mLooper);
+        try {
+            mLocationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, mLocationListener, mLooper);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when requesting passive updates", se);
+        }
     }
     
     /**
@@ -171,7 +188,11 @@ public class DeviceLocation {
      * Remove the location listener from the {@link #mLocationManager}
      */
     public void stopUpdates() {
-        mLocationManager.removeUpdates(mLocationListener);
+        try {
+            mLocationManager.removeUpdates(mLocationListener);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when removing updates", se);
+        }
     }
     
     /**
@@ -184,7 +205,12 @@ public class DeviceLocation {
             SRLOG.w(TAG, "Location permission not granted; last GPS location unavailable.");
             return null;
         }
-        return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        try {
+            return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when getting last GPS location", se);
+            return null;
+        }
     }
     
     /**
@@ -198,7 +224,12 @@ public class DeviceLocation {
             SRLOG.w(TAG, "Location permission not granted; last mock location unavailable.");
             return null;
         }
-        return mLocationManager.getLastKnownLocation(MOCK_PROVIDER);
+        try {
+            return mLocationManager.getLastKnownLocation(MOCK_PROVIDER);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when getting last mock location", se);
+            return null;
+        }
     }
     
     /**
@@ -219,7 +250,12 @@ public class DeviceLocation {
             SRLOG.w(TAG, "Location permission not granted; last passive location unavailable.");
             return null;
         }
-        return mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        try {
+            return mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        } catch (SecurityException se) {
+            SRLOG.w(TAG, "Missing location permission when getting last passive location", se);
+            return null;
+        }
     }
     
     /**
