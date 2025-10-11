@@ -18,7 +18,7 @@ We take security seriously in the Android Fourteeners app, as user location data
 If you discover a security vulnerability, please follow these steps:
 
 1. **DO NOT** create a public GitHub issue for the vulnerability
-2. Email security concerns to: [Create a security advisory](https://github.com/your-repo/android-fourteeners/security/advisories/new)
+2. Create a security advisory at: [Create a security advisory](https://github.com/your-repo/android-fourteeners/security/advisories/new)
 3. Include the following information:
    - Description of the vulnerability
    - Steps to reproduce
