@@ -1,5 +1,21 @@
-// Modernized build - plugin versions managed in settings.gradle
-// Intentionally minimal: no buildscript or repositories needed here.
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.google.gms:google-services:4.3.15'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
 tasks.register("clean", Delete) {
     delete(rootProject.buildDir)
