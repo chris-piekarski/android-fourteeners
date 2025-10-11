@@ -1,4 +1,11 @@
-# android-fourteeners
+# Android Fourteeners 🏔️
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com)
+[![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple.svg)](https://kotlinlang.org)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Mountaineer%20Style-orange)](CODE_OF_CONDUCT.md)
 
 A modern Android application for tracking summit attempts on Colorado's fourteeners (peaks above 14,000 feet), written in Kotlin and targeting Android API 33.
 
@@ -38,4 +45,21 @@ This project has been modernized from the original Java codebase:
 
 ## Contributing
 
-Contribute what you can when you can and only if you *want* to!
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+Also, please review our:
+- [Code of Conduct](CODE_OF_CONDUCT.md) - Our mountaineering-themed community guidelines
+- [Security Policy](SECURITY.md) - For reporting security vulnerabilities
+
+Contribute what you can when you can and only if you *want* to! 🎿
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Colorado's majestic fourteeners for the inspiration
+- The hiking community for beta and trail conditions
+- All contributors who help improve this app
+- Coffee shops at altitude for providing WiFi and warmth
