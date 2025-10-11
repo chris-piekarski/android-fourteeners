@@ -123,23 +123,21 @@ public class HomeActivity extends Activity {
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.settings:
-                showSettings();
-                return true;
-            case R.id.leave_no_trace:
-                showLeaveNoTrace();
-                return true;
-            case R.id.license:
-                showLicense();
-                return true;
-            case R.id.help:
-                showHelp();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.settings) {
+            showSettings();
+            return true;
+        } else if (id == R.id.leave_no_trace) {
+            showLeaveNoTrace();
+            return true;
+        } else if (id == R.id.license) {
+            showLicense();
+            return true;
+        } else if (id == R.id.help) {
+            showHelp();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
     
     @Override
