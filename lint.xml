@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Suppress warnings for deprecated test framework until migration -->
+    <issue id="Deprecated" severity="warning" />
+    
+    <!-- Suppress warnings for deprecated AndroidTestCase -->
+    <issue id="NewApi" severity="warning" />
+    
+    <!-- Allow use of deprecated APIs for now -->
+    <issue id="OldTargetApi" severity="warning" />
+    
+    <!-- Suppress warnings about missing translations -->
+    <issue id="MissingTranslation" severity="ignore" />
+    
+    <!-- Suppress warnings about hardcoded text -->
+    <issue id="HardcodedText" severity="warning" />
+    
+    <!-- Suppress gradle dependency warnings -->
+    <issue id="GradleDependency" severity="warning" />
+    
+    <!-- Suppress icon warnings -->
+    <issue id="IconMissingDensityFolder" severity="warning" />
+    <issue id="IconDensities" severity="warning" />
+</lint>

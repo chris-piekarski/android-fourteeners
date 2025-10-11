@@ -1,20 +1,18 @@
 pluginManagement {
     repositories {
-        google()
         mavenCentral()
         gradlePluginPortal()
-    }
-    plugins {
-        id 'com.android.application' version '8.5.2'
-        id 'com.google.gms.google-services' version '4.4.2' apply false
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://repo1.maven.org/maven2' }
     }
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
-        google()
         mavenCentral()
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://repo1.maven.org/maven2' }
     }
 }
 

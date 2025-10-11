@@ -1,3 +1,18 @@
+buildscript {
+    repositories {
+        // Try multiple repositories in order
+        mavenCentral()
+        gradlePluginPortal()
+        // Add google as last resort with specific mirrors
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://repo1.maven.org/maven2' }
+    }
+    dependencies {
+        // Use a version that's more likely to be available
+        classpath 'com.android.tools.build:gradle:4.0.2'
+    }
+}
+
 // Repositories are managed in settings.gradle (dependencyResolutionManagement)
 // Keep this file minimal.
 

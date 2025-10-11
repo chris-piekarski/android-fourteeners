@@ -81,10 +81,10 @@ public class HomeActivity extends Activity {
 
         setContentView(R.layout.activity_home);
         
-        mStats1 = (TextView) findViewById(R.id.peak_stats1);
-        mStats2 = (TextView) findViewById(R.id.peak_stats2);
-        mStats3 = (TextView) findViewById(R.id.peak_stats3);
-        mProgress = (ProgressBar) findViewById(R.id.progressBar2);
+        mStats1 = findViewById(R.id.peak_stats1);
+        mStats2 = findViewById(R.id.peak_stats2);
+        mStats3 = findViewById(R.id.peak_stats3);
+        mProgress = findViewById(R.id.progressBar2);
         
         refreshStats();
     }

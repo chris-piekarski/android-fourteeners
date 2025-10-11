@@ -44,7 +44,7 @@ public class SRLOG {
         log("e", TAG, msg);
     }
     
-    public void wtf(String TAG, String msg) {
+    public static void wtf(String TAG, String msg) {
         log("wtf", TAG, msg);
     }
 }
