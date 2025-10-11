@@ -1,13 +1,12 @@
 package com.cpiekarski.fourteeners.utils;
 
+import android.os.Build;
 import android.util.Log;
-
-import com.cpiekarski.fourteeners.BuildConfig;
 
 
 public class SRLOG {
-    //make google happy by not polluting logcat in production
-    private static boolean silent = BuildConfig.DEBUG; //"user".equals(Build.TYPE);
+    // Enable verbose logs for non-user builds without relying on BuildConfig
+    private static final boolean silent = !"user".equals(Build.TYPE);
     
     private static void log(String l, String tag, String msg) {
         if(l.equals("v") && silent) {
