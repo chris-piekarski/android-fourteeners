@@ -294,7 +294,7 @@ fun `calculateElevationGain returns correct value for valid input`() {
 
 ## Recognition
 
-Contributors who submit accepted PRs will be added to our [Contributors](#) section in the README.
+Contributors who submit accepted PRs will be added to our [Contributors](README.md#contributors) section in the README.
 
 ## Questions?
 
