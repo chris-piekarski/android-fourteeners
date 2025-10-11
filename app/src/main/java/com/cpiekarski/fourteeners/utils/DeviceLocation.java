@@ -1,12 +1,16 @@
 package com.cpiekarski.fourteeners.utils;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -56,7 +60,9 @@ public class DeviceLocation {
         
         // Acquire a reference to the system Location Manager
         mLocationManager = (LocationManager) mCtx.getSystemService(Context.LOCATION_SERVICE);
-        mLastLocation = mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        if (hasLocationPermission()) {
+            mLastLocation = mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        }
 
         // Define a listener that responds to location updates
         mLocationListener = new LocationListener() {
@@ -107,6 +113,12 @@ public class DeviceLocation {
         //mLocationManager.requestLocationUpdates(MOCK_PROVIDER, 0, 0, mLocationListener);
 
     }
+
+    private boolean hasLocationPermission() {
+        int fine = ContextCompat.checkSelfPermission(mCtx, Manifest.permission.ACCESS_FINE_LOCATION);
+        int coarse = ContextCompat.checkSelfPermission(mCtx, Manifest.permission.ACCESS_COARSE_LOCATION);
+        return fine == PackageManager.PERMISSION_GRANTED || coarse == PackageManager.PERMISSION_GRANTED;
+    }
     
     public void dumpProviders() {
         for(String l : mLocationManager.getAllProviders()) {
@@ -118,6 +130,10 @@ public class DeviceLocation {
      * Start updates from the Network provider only
      */
     public void getNetworkUpdates() {
+        if (!hasLocationPermission()) {
+            SRLOG.w(TAG, "Location permission not granted; skipping network updates.");
+            return;
+        }
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener, mLooper);
     }
     
@@ -125,6 +141,10 @@ public class DeviceLocation {
      * Start updates from only the GPS provider only
      */
     public void getGPSUpdates() {
+        if (!hasLocationPermission()) {
+            SRLOG.w(TAG, "Location permission not granted; skipping GPS updates.");
+            return;
+        }
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_UPDATE_TIME, 0, mLocationListener, mLooper);
     }
     
@@ -132,6 +152,10 @@ public class DeviceLocation {
      * Start updates from any provider on the system
      */
     public void getPassiveUpdates() {
+        if (!hasLocationPermission()) {
+            SRLOG.w(TAG, "Location permission not granted; skipping passive updates.");
+            return;
+        }
         mLocationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, mLocationListener, mLooper);
     }
     
@@ -156,6 +180,10 @@ public class DeviceLocation {
      * @return last know location directly from LocationManager
      */
     public Location getLastGPSLocation() {
+        if (!hasLocationPermission()) {
+            SRLOG.w(TAG, "Location permission not granted; last GPS location unavailable.");
+            return null;
+        }
         return mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
     
@@ -166,6 +194,10 @@ public class DeviceLocation {
      * @return Null if never set, Location otherwise
      */
     public Location getLastMockLocation() {
+        if (!hasLocationPermission()) {
+            SRLOG.w(TAG, "Location permission not granted; last mock location unavailable.");
+            return null;
+        }
         return mLocationManager.getLastKnownLocation(MOCK_PROVIDER);
     }
     
@@ -183,6 +215,10 @@ public class DeviceLocation {
     }
     
     public Location getLastPassiveLocation() {
+        if (!hasLocationPermission()) {
+            SRLOG.w(TAG, "Location permission not granted; last passive location unavailable.");
+            return null;
+        }
         return mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
     }
     
