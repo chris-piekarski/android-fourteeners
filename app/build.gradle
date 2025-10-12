@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdk 33
+    namespace 'com.cpiekarski.fourteeners'
 
     defaultConfig {
         applicationId "com.cpiekarski.fourteeners"
