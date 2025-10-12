@@ -40,6 +40,15 @@ jobs:
         distribution: 'temurin'
         cache: 'gradle'
 
+    # Install Android command line tools and platform dependencies needed for the Gradle build
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Install Android SDK components
+      run: |
+        sdkmanager --install "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+        yes | sdkmanager --licenses
+
     # Initialize CodeQL tools for scanning
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
