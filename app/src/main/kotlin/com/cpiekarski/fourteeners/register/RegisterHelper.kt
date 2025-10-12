@@ -25,7 +25,7 @@ class RegisterHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val PROOF = "proof"
         const val SUMMIT = "summit"
 
-        private const val TABLE_CREATE = """
+        private val TABLE_CREATE = """
             CREATE TABLE $TABLE_NAME (
                 $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $MNT_NAME TEXT,

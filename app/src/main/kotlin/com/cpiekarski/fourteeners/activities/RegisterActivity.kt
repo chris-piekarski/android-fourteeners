@@ -93,7 +93,7 @@ class RegisterActivity : Activity() {
 
         adapter = MyAdapter(this, R.layout.history_list_view, c, fromCols, toViews, 0)
         
-        val listView = findViewById<ListView>(R.id.register_listview)
+        val listView = findViewById<ListView>(R.id.history_listview)
         listView?.adapter = adapter
     }
 
