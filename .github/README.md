@@ -60,6 +60,19 @@ Add these badges to your main README if desired:
 [![Android CI](https://github.com/chris-piekarski/android-fourteeners/actions/workflows/android-ci.yml/badge.svg)](https://github.com/chris-piekarski/android-fourteeners/actions/workflows/android-ci.yml)
 ```
 
+## Action Versions
+
+This configuration uses the latest stable versions of GitHub Actions:
+- `actions/checkout@v4`
+- `actions/setup-java@v4`
+- `actions/upload-artifact@v4`
+- `actions/cache@v4`
+- `gradle/wrapper-validation-action@v2`
+- `github/codeql-action/init@v3`
+- `github/codeql-action/analyze@v3`
+- `reactivecircus/android-emulator-runner@v2`
+- `android-actions/setup-android@v3`
+
 ## Troubleshooting
 
 ### CodeQL Build Failures
@@ -71,8 +84,13 @@ Add these badges to your main README if desired:
 - Emulator tests require macOS runners (hardware acceleration)
 - API level compatibility with your minSdk/targetSdk
 - Timeout issues may require increasing the timeout value
+- Emulator optimizations added to reduce flakiness
 
 ### Dependabot Issues
 - Ensure `develop` branch exists if configured as target
 - Check for conflicting dependencies that can't auto-merge
 - Review security alerts separately from version updates
+
+### Upload Artifact Deprecation
+- We use `upload-artifact@v4` to avoid deprecation warnings
+- Note that v4 has breaking changes from v3 (artifacts don't persist between workflow runs)

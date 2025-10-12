@@ -33,7 +33,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Validate Gradle wrapper
-      uses: gradle/wrapper-validation-action@v1
+      uses: gradle/wrapper-validation-action@v2
 
     - name: Run lint checks
       run: ./gradlew lint
@@ -49,7 +49,7 @@ jobs:
 
     - name: Upload build reports
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-reports
         path: |
@@ -57,7 +57,7 @@ jobs:
           build/reports/
 
     - name: Upload APK artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: apk-artifacts
         path: |
@@ -90,7 +90,7 @@ jobs:
       uses: android-actions/setup-android@v3
 
     - name: AVD cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: avd-cache
       with:
         path: |
@@ -104,11 +104,13 @@ jobs:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
         arch: x86_64
+        emulator-options: "-no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none"
+        disable-animations: true
         script: ./gradlew connectedAndroidTest
 
     - name: Upload test reports
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-reports-api-${{ matrix.api-level }}
         path: |
