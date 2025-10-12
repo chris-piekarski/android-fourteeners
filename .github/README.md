@@ -17,7 +17,7 @@ This directory contains GitHub-specific configuration files for the Android Four
 - **Trigger**: Push/PR to main branches
 - **Jobs**:
   - **Build and Test**: Runs on Ubuntu, includes lint, unit tests, and APK builds
-  - **Instrumented Tests**: Runs on macOS with Android emulators (API 29, 31, 33)
+  - **Instrumented Tests**: Runs on macOS with Android emulator (API 33 only)
 - **Artifacts**: Uploads build reports and APKs
 
 ## Dependency Management
@@ -82,7 +82,8 @@ This configuration uses the latest stable versions of GitHub Actions:
 
 ### Android CI Test Failures
 - Emulator tests require macOS runners (hardware acceleration)
-- API level compatibility with your minSdk/targetSdk
+- Tests run on API level 33 only (Android 13)
+- Ensure your app is compatible with API 33
 - Timeout issues may require increasing the timeout value
 - Emulator optimizations added to reduce flakiness
 

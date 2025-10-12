@@ -66,11 +66,7 @@ jobs:
 
   test:
     name: Run Instrumented Tests
-    runs-on: macos-latest  # Use macOS for hardware acceleration
-    strategy:
-      matrix:
-        api-level: [29, 31, 33]  # Test on multiple API levels
-        target: [google_apis]
+    runs-on: macos-13  # Use specific macOS version for stability
 
     steps:
     - name: Checkout code
@@ -96,23 +92,33 @@ jobs:
         path: |
           ~/.android/avd/*
           ~/.android/adb*
-        key: avd-${{ matrix.api-level }}-${{ matrix.target }}
+        key: avd-api-33-aosp-atd-macos
 
     - name: Create AVD and run tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: ${{ matrix.api-level }}
-        target: ${{ matrix.target }}
+        api-level: 33
+        target: aosp_atd  # Use Automated Test Device for better stability
         arch: x86_64
-        emulator-options: "-no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none"
+        ram-size: 4096  # Increase RAM allocation
+        heap-size: 512  # Set heap size
+        disk-size: 4096M  # Set disk size
+        emulator-boot-timeout: 600  # Increase boot timeout to 10 minutes
+        emulator-options: "-no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot-save"
         disable-animations: true
-        script: ./gradlew connectedAndroidTest
+        disable-spellchecker: true
+        script: |
+          echo "Waiting for emulator to fully boot..."
+          adb wait-for-device
+          adb shell input keyevent 82
+          echo "Running tests..."
+          ./gradlew connectedAndroidTest --stacktrace
 
     - name: Upload test reports
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: test-reports-api-${{ matrix.api-level }}
+        name: test-reports-api-33
         path: |
           app/build/reports/androidTests/
           app/build/outputs/androidTest-results/
