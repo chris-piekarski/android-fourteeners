@@ -1,0 +1,70 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "master", "main", "develop" ]
+  pull_request:
+    branches: [ "master", "main", "develop" ]
+  schedule:
+    - cron: '32 3 * * 1'  # Runs at 3:32 AM UTC every Monday
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: ${{ matrix.timeout }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: java-kotlin
+            os: ubuntu-latest
+            timeout: 360
+            # Use Java 17 for building (Android Gradle plugin requirement)
+            java-version: '17'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Set up JDK for building the Android/Kotlin project
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    # Initialize CodeQL tools for scanning
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        # If you wish to specify custom queries, you can do so here or in a config file.
+        # By default, queries listed here will override any specified in a config file.
+        # Prefix the list here with "+" to use these queries and those in the config file.
+
+        # For more details on CodeQL's query packs, refer to:
+        # https://docs.github.com/en/code-security/code-scanning/using-codeql-code-scanning-with-your-existing-ci-system/configuring-codeql-in-your-ci-system#using-queries-in-ql-packs
+        # queries: security-extended,security-and-quality
+
+    # Grant execute permission for gradlew
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    # Build the project - CRITICAL STEP for Kotlin/Java analysis
+    - name: Build project with Gradle
+      run: ./gradlew build --no-daemon
+      env:
+        JAVA_HOME: ${{ env.JAVA_HOME }}
+
+    # Perform CodeQL Analysis - this must come AFTER the build
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"

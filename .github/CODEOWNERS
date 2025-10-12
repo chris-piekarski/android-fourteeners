@@ -1,0 +1,27 @@
+# Code Owners for Android Fourteeners
+# These users will be automatically requested for review when someone opens a pull request.
+
+# Default owners for everything in the repo
+* @chris-piekarski
+
+# Documentation
+/docs/ @chris-piekarski
+*.md @chris-piekarski
+
+# Android application code
+/app/src/main/kotlin/ @chris-piekarski
+/app/src/main/java/ @chris-piekarski
+/app/src/androidTest/ @chris-piekarski
+/app/src/test/ @chris-piekarski
+
+# Build configuration
+*.gradle @chris-piekarski
+/gradle/ @chris-piekarski
+gradlew* @chris-piekarski
+
+# GitHub configuration
+/.github/ @chris-piekarski
+
+# Scripts and automation
+/scripts/ @chris-piekarski
+Makefile @chris-piekarski
