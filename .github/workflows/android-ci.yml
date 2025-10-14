@@ -35,18 +35,36 @@ jobs:
     - name: Validate Gradle wrapper
       uses: gradle/wrapper-validation-action@v2
 
-    - name: Run lint checks
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Setup Gradle
       run: |
-        ./gradlew lint
-        ./gradlew ktlintCheck
+        export GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+        export GRADLE_USER_HOME=$HOME/.gradle
+
+    - name: Run lint checks
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+      run: |
+        echo "Running Android lint..."
+        ./gradlew lint --continue --stacktrace
+        echo "Running ktlint..."
+        ./gradlew ktlintCheck --continue --stacktrace
 
     - name: Run unit tests
-      run: ./gradlew test
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+      run: ./gradlew test --continue --stacktrace
 
     - name: Build debug APK
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
       run: ./gradlew assembleDebug
 
     - name: Build release APK
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
       run: ./gradlew assembleRelease
 
     - name: Upload build reports
@@ -114,6 +132,7 @@ jobs:
           adb wait-for-device
           adb shell input keyevent 82
           echo "Running tests..."
+          export GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
           ./gradlew connectedAndroidTest --stacktrace
 
     - name: Upload test reports
