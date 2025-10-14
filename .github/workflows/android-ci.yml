@@ -38,11 +38,6 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Setup Gradle
-      run: |
-        export GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
-        export GRADLE_USER_HOME=$HOME/.gradle
-
     - name: Run lint checks
       env:
         GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
@@ -112,7 +107,7 @@ jobs:
         path: |
           ~/.android/avd/*
           ~/.android/adb*
-        key: avd-api-29-default-macos
+        key: avd-api-29-default-macos-13
 
     - name: Create AVD and run tests
       uses: reactivecircus/android-emulator-runner@v2
