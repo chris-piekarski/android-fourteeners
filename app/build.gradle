@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'org.jlleitschuh.gradle.ktlint'
 // apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -39,6 +40,22 @@ android {
         androidTest {
             kotlin.srcDirs = ['src/androidTest/kotlin']
         }
+    }
+}
+
+ktlint {
+    version = "0.49.1"
+    android = true
+    outputToConsole = true
+    coloredOutput = true
+    verbose = true
+    reporters {
+        reporter "checkstyle"
+        reporter "plain"
+    }
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
     }
 }
 
