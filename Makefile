@@ -231,12 +231,13 @@ status: ## Show project status
 
 # ============= Shortcuts =============
 
-c: clean ## Shortcut for clean
-b: build ## Shortcut for build
-t: test ## Shortcut for test
-i: install ## Shortcut for install
-r: run ## Shortcut for run
-l: logcat ## Shortcut for logcat
+# Shortcut aliases (hidden from help)
+c: clean
+b: build
+t: test
+i: install
+r: run
+l: logcat
 
 # ============= CI/CD =============
 
