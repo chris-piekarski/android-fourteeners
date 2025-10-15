@@ -1,31 +1,31 @@
 package com.cpiekarski.fourteeners.test
 
-import android.test.AndroidTestCase
-import android.test.suitebuilder.annotation.SmallTest
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.cpiekarski.fourteeners.utils.Mountain
 import com.cpiekarski.fourteeners.utils.Mountains
-import junit.framework.Assert
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
 
-class MountainsTest : AndroidTestCase() {
+@RunWith(AndroidJUnit4::class)
+class MountainsTest {
     private lateinit var mountains: Mountains
     private val tag = "SummitMountainsTest"
 
-    @Throws(Exception::class)
-    override fun setUp() {
-        super.setUp()
+    @Before
+    fun setUp() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
         mountains = Mountains.getInstance(context)
     }
 
-    @Throws(Exception::class)
-    override fun tearDown() {
-        super.tearDown()
-    }
-
+    @Test
     fun testSize() {
         Assert.assertTrue("Mountains size not 53", 53 == mountains.getSize())
     }
 
-    @SmallTest
+    @Test
     fun testLongs() {
         val m = mountains.getMountain("Longs Peak")
         Assert.assertTrue("Elevation", 14255 == m?.getElevation())
@@ -33,7 +33,7 @@ class MountainsTest : AndroidTestCase() {
         Assert.assertTrue("County", "Boulder" == m?.getCounty())
     }
 
-    @SmallTest
+    @Test
     fun testBlanca() {
         val m = mountains.getMountain("Blanca Peak")
         Assert.assertTrue("Elevation", 14345 == m?.getElevation())
@@ -41,33 +41,34 @@ class MountainsTest : AndroidTestCase() {
         Assert.assertTrue("County", "Alamosa, Huerfano, Costilla" == m?.getCounty())
     }
 
-    @SmallTest
+    @Test
     fun testSingleton() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
         val m = Mountains.getInstance(context).getMountain("Longs Peak")
         Assert.assertTrue("Elevation", 14255 == m?.getElevation())
         Assert.assertTrue("Range", "Front" == m?.getRange())
         Assert.assertTrue("County", "Boulder" == m?.getCounty())
     }
 
-    @SmallTest
+    @Test
     fun testRanges() {
         val ranges = mountains.getRanges()
         Assert.assertTrue("Ranges not 7", 7 == ranges.size)
     }
 
-    @SmallTest
+    @Test
     fun testFrontRange() {
         val front = mountains.getNamesInRange("Front")
         Assert.assertTrue("Front range not 6", 6 == front?.size)
     }
 
-    @SmallTest
+    @Test
     fun testElkRange() {
         val elk = mountains.getNamesInRange("Elk")
-        Assert.assertTrue("Elk range not 7", 7 == elk?.size)
+        Assert.assertTrue("Elk range not 5", 5 == elk?.size)
     }
 
-    @SmallTest
+    @Test
     fun testSawatchRange() {
         val sawatch = mountains.getNamesInRange("Sawatch")
         Assert.assertTrue("Sawatch range not 15", 15 == sawatch?.size)

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/leave_no_trace"
         android:title="@string/leave_no_trace"
-        android:showAsAction="collapseActionView"/>
+        app:showAsAction="collapseActionView"/>
     <item android:id="@+id/settings"
           android:title="@string/pref_title_settings"
-          android:showAsAction="collapseActionView"/>
+          app:showAsAction="collapseActionView"/>
     <item android:id="@+id/help"
           android:title="@string/help"
-          android:showAsAction="collapseActionView" />
+          app:showAsAction="collapseActionView" />
     <item android:id="@+id/license"
         android:title="@string/license"
-        android:showAsAction="collapseActionView"/>
+        app:showAsAction="collapseActionView"/>
 </menu>

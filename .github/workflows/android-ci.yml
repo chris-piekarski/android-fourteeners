@@ -1,0 +1,141 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "master", "main", "develop" ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.github/workflows/codeql.yml'
+  pull_request:
+    branches: [ "master", "main", "develop" ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Validate Gradle wrapper
+      uses: gradle/wrapper-validation-action@v2
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Run lint checks
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+      run: |
+        echo "Running Android lint..."
+        ./gradlew lint --continue --stacktrace
+        # ktlint temporarily disabled due to plugin version issues
+        # echo "Running ktlint..."
+        # ./gradlew ktlintCheck --continue --stacktrace
+
+    - name: Run unit tests
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+      run: ./gradlew test --continue --stacktrace
+
+    - name: Build debug APK
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+      run: ./gradlew assembleDebug
+
+    - name: Build release APK
+      env:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+      run: ./gradlew assembleRelease
+
+    - name: Upload build reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-reports
+        path: |
+          app/build/reports/
+          build/reports/
+
+    - name: Upload APK artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: apk-artifacts
+        path: |
+          app/build/outputs/apk/debug/*.apk
+          app/build/outputs/apk/release/*.apk
+
+  test:
+    name: Run Instrumented Tests
+    runs-on: macos-13  # Use specific macOS version for stability
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: AVD cache
+      uses: actions/cache@v4
+      id: avd-cache
+      with:
+        path: |
+          ~/.android/avd/*
+          ~/.android/adb*
+        key: avd-api-29-default-macos-13
+
+    - name: Create AVD and run tests
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        target: default
+        arch: x86_64
+        ram-size: 2048
+        heap-size: 256
+        disk-size: 2048M
+        emulator-boot-timeout: 600
+        emulator-options: "-no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot-save"
+        disable-animations: true
+        disable-spellchecker: true
+        script: |
+          echo "Waiting for emulator to fully boot..."
+          adb wait-for-device
+          adb shell input keyevent 82
+          echo "Running tests..."
+          export GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2048m -Dorg.gradle.daemon=false"
+          ./gradlew connectedAndroidTest --stacktrace
+
+    - name: Upload test reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-reports-api-29
+        path: |
+          app/build/reports/androidTests/
+          app/build/outputs/androidTest-results/

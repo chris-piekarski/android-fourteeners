@@ -28,3 +28,10 @@ proguard/
 
 .idea/
 /app/google-services.json
+
+# Ktlint
+*.ktlint
+
+# Additional build artifacts
+.DS_Store
+thumbs.db
