@@ -65,7 +65,7 @@ class MountainsTest {
     @Test
     fun testElkRange() {
         val elk = mountains.getNamesInRange("Elk")
-        Assert.assertTrue("Elk range not 7", 7 == elk?.size)
+        Assert.assertTrue("Elk range not 5", 5 == elk?.size)
     }
 
     @Test

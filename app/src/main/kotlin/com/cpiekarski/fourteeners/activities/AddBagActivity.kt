@@ -29,6 +29,10 @@ class AddBagActivity : Activity(), AdapterView.OnItemSelectedListener {
         finish()
     }
 
+    fun addAddPeak(view: View) {
+        // TODO: Implement add-peak saving logic
+    }
+
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         // Handle item selection
     }

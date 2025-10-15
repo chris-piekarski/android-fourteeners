@@ -103,23 +103,37 @@ class Mountains private constructor(private val context: Context) {
                         val latitude = xrp.getAttributeValue(null, "lat")
                         val county = xrp.getAttributeValue(null, "county")
 
-                        val mountain = Mountain(
-                            name = name,
-                            range = range,
-                            county = county,
-                            longitude = longitude.toDouble(),
-                            latitude = latitude.toDouble(),
-                            rank = rank.toInt(),
-                            elevation = elev.toInt()
-                        )
-                        mountains[name] = mountain
+                        // Check if all required attributes are present
+                        if (name != null && rank != null && elev != null && range != null && 
+                            longitude != null && latitude != null && county != null) {
+                            
+                            val mountain = Mountain(
+                                name = name,
+                                range = range,
+                                county = county,
+                                longitude = longitude.toDouble(),
+                                latitude = latitude.toDouble(),
+                                rank = rank.toInt(),
+                                elevation = elev.toInt()
+                            )
+                            
+                            // Only include official fourteeners (rank > 0)
+                            if (rank.toInt() > 0) {
+                                mountains[name] = mountain
+                            }
 
-                        if (ranges.containsKey(range)) {
-                            ranges[range]?.add(name)
+                            // Only add to ranges if it's an official fourteener
+                            if (rank.toInt() > 0) {
+                                if (ranges.containsKey(range)) {
+                                    ranges[range]?.add(name)
+                                } else {
+                                    val newList = ArrayList<String>()
+                                    newList.add(name)
+                                    ranges[range] = newList
+                                }
+                            }
                         } else {
-                            val newList = ArrayList<String>()
-                            newList.add(name)
-                            ranges[range] = newList
+                            SRLOG.w(tag, "Skipping mountain with missing attributes: name=$name, rank=$rank, elev=$elev, range=$range, longitude=$longitude, latitude=$latitude, county=$county")
                         }
 
                         SRLOG.v(tag, "Mountain Attribute Count $count")
