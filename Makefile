@@ -65,9 +65,9 @@ test-instrumented: ## Run instrumented tests
 	$(GRADLE) connectedAndroidTest
 	@echo "✅ Instrumented tests completed"
 
-test-coverage: ## Run tests with coverage report
-	$(GRADLE) testDebugUnitTestCoverage
-	@echo "✅ Coverage report generated: app/build/reports/coverage/"
+test-coverage: ## Run tests with JaCoCo coverage report
+	$(GRADLE) jacocoTestReport
+	@echo "✅ Coverage report generated: app/build/reports/jacoco/jacocoTestReport/html/"
 
 # ============= Installation =============
 

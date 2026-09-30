@@ -56,16 +56,40 @@ class RegisterEntry(private val context: Context, entryId: Int = -1) {
     
     private fun parseStartLocationTuple(tuple: String) {
         val parts = tuple.split(";")
-        startLatLoc = parts[0].toDouble()
-        startLongLoc = parts[1].toDouble()
-        startLocAccuracy = parts[2].toInt()
+        if (parts.size != 3) return
+        // Parse all fields to local variables first; only assign if every field succeeds
+        val lat: Double
+        val lon: Double
+        val acc: Int
+        try {
+            lat = parts[0].toDouble()
+            lon = parts[1].toDouble()
+            acc = parts[2].toInt()
+        } catch (e: NumberFormatException) {
+            return // bad tuple — leave all fields unset
+        }
+        startLatLoc = lat
+        startLongLoc = lon
+        startLocAccuracy = acc
     }
     
     private fun parseEndLocationTuple(tuple: String) {
         val parts = tuple.split(";")
-        endLatLoc = parts[0].toDouble()
-        endLongLoc = parts[1].toDouble()
-        endLocAccuracy = parts[2].toInt()
+        if (parts.size != 3) return
+        // Parse all fields to local variables first; only assign if every field succeeds
+        val lat: Double
+        val lon: Double
+        val acc: Int
+        try {
+            lat = parts[0].toDouble()
+            lon = parts[1].toDouble()
+            acc = parts[2].toInt()
+        } catch (e: NumberFormatException) {
+            return // bad tuple — leave all fields unset
+        }
+        endLatLoc = lat
+        endLongLoc = lon
+        endLocAccuracy = acc
     }
     
     /**
@@ -102,8 +126,74 @@ class RegisterEntry(private val context: Context, entryId: Int = -1) {
     }
     
     private fun readEntry(entryId: Int) {
-        // Implementation for reading entry from database
-        // TODO: Implement this method
+        val r = RegisterHelper(context)
+        val db = r.readableDatabase
+        val cursor = db.query(
+            RegisterHelper.TABLE_NAME,
+            null,
+            "${RegisterHelper.COLUMN_ID} = ?",
+            arrayOf(entryId.toString()),
+            null, null, null
+        )
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                val mntName = cursor.getString(cursor.getColumnIndexOrThrow(RegisterHelper.MNT_NAME))
+                val mntRange = cursor.getString(cursor.getColumnIndexOrThrow(RegisterHelper.MNT_RANGE))
+                val mts = Mountains.getInstance(context)
+                this.mountain = mts.getMountain(mntName, mntRange)
+
+                val startLocIdx = cursor.getColumnIndexOrThrow(RegisterHelper.START_LOC)
+                val startLocVal = cursor.getString(startLocIdx)
+                if (startLocVal != null) {
+                    parseStartLocationTuple(startLocVal)
+                }
+                val endLocIdx = cursor.getColumnIndexOrThrow(RegisterHelper.END_LOC)
+                val endLocVal = cursor.getString(endLocIdx)
+                if (endLocVal != null) {
+                    parseEndLocationTuple(endLocVal)
+                }
+
+                val startTimeIdx = cursor.getColumnIndexOrThrow(RegisterHelper.START_TIME)
+                val startTimeVal = cursor.getString(startTimeIdx)
+                if (startTimeVal != null) setStartTime(startTimeVal)
+
+                val endTimeIdx = cursor.getColumnIndexOrThrow(RegisterHelper.END_TIME)
+                val endTimeVal = cursor.getString(endTimeIdx)
+                if (endTimeVal != null) setEndTime(endTimeVal)
+
+                val distanceIdx = cursor.getColumnIndexOrThrow(RegisterHelper.DISTANCE)
+                val distanceVal = cursor.getString(distanceIdx)
+                if (distanceVal != null) setDistance(distanceVal)
+
+                val summitIdx = cursor.getColumnIndexOrThrow(RegisterHelper.SUMMIT)
+                val summitVal = cursor.getString(summitIdx)
+                setSummit(if (summitVal != null) summitVal.toInt() else NO_VALUE)
+
+                val startElevIdx = cursor.getColumnIndexOrThrow(RegisterHelper.START_ELEVATION)
+                val startElevVal = cursor.getString(startElevIdx)
+                startElevation = if (startElevVal != null) startElevVal.toInt() else NO_VALUE
+
+                val endElevIdx = cursor.getColumnIndexOrThrow(RegisterHelper.END_ELEVATION)
+                val endElevVal = cursor.getString(endElevIdx)
+                endElevation = if (endElevVal != null) endElevVal.toInt() else NO_VALUE
+
+                val peakElevIdx = cursor.getColumnIndexOrThrow(RegisterHelper.PEEK_ELEVATION)
+                val peakElevVal = cursor.getString(peakElevIdx)
+                peekElevation = if (peakElevVal != null) peakElevVal.toInt() else NO_VALUE
+
+                val notesIdx = cursor.getColumnIndexOrThrow(RegisterHelper.NOTES)
+                val notesVal = cursor.getString(notesIdx)
+                if (notesVal != null) setNotes(notesVal)
+
+                val proofIdx = cursor.getColumnIndexOrThrow(RegisterHelper.PROOF)
+                val proofVal = cursor.getString(proofIdx)
+                if (proofVal != null) setProof(proofVal)
+
+                rowId = cursor.getLong(cursor.getColumnIndexOrThrow(RegisterHelper.COLUMN_ID))
+            }
+        } finally {
+            cursor.close()
+        }
     }
     
     fun getMountainName(): String? {
@@ -142,4 +232,21 @@ class RegisterEntry(private val context: Context, entryId: Int = -1) {
     fun setDistance(distance: String) {
         this.distance = distance
     }
+
+    fun getStartTime(): String? = startTime
+    fun getEndTime(): String? = endTime
+    fun getNotes(): String? = notes
+    fun getProof(): String? = proof
+    fun getDistance(): String? = distance
+    fun getSummit(): Int = summit
+    fun getStartElevation(): Int = startElevation
+    fun getEndElevation(): Int = endElevation
+    fun getPeekElevation(): Int = peekElevation
+    fun getStartLatitude(): Double = startLatLoc
+    fun getStartLongitude(): Double = startLongLoc
+    fun getEndLatitude(): Double = endLatLoc
+    fun getEndLongitude(): Double = endLongLoc
+    fun getStartAccuracy(): Int = startLocAccuracy
+    fun getEndAccuracy(): Int = endLocAccuracy
+    fun getRowId(): Long = rowId
 }

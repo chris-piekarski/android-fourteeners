@@ -9,6 +9,16 @@
 
 A modern Android application for tracking summit attempts on Colorado's fourteeners (peaks above 14,000 feet), written in Kotlin and targeting Android API 33.
 
+> **On Fourteeners**
+>
+> Gordon W. Allport's words have stayed with me: living brings suffering, but surviving asks us to find meaning in it.
+>
+> A mountain makes that distinction feel real. The climb can be cold, uncertain, and exhausting. Reaching the summit does not erase those hours. It gives me a chance to look back and understand what kept me moving: the people who shared parts of the journey, the choices I made, and the reasons I started.
+>
+> I don't believe hardship is valuable simply because it hurts. Sometimes it is just hard. Meaning comes from what we choose to carry forward—and, when we can, from how we help someone else along the way.
+
+---
+
 ## Features
 
 - Summit register for tracking your fourteener climbs

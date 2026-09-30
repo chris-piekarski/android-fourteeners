@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'jacoco'
 // apply plugin: 'org.jlleitschuh.gradle.ktlint'
 // apply plugin: 'com.google.gms.google-services'
 
@@ -23,16 +24,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    
+
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+                excludes = ['jdk.internal.*']
+            }
+            systemProperty "mockk.android.mode", "true"
+        }
+        unitTests.includeAndroidResources = true
+    }
+
     sourceSets {
         main {
             kotlin.srcDirs = ['src/main/kotlin']
@@ -59,14 +71,45 @@ android {
 //     }
 // }
 
+jacoco {
+    toolVersion = "0.8.11"
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    def fileFilter = [
+            '**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*',
+            '**/*Test*.*', 'android/**/*.*', '**/*$inlined$*.*',
+            '**/Lambda$*.class', '**/*Lambda.class', '**/*$Lambda*.*',
+            // Activities require Robolectric or instrumentation tests
+            '**/activities/**'
+    ]
+
+    sourceDirectories.from = files("$projectDir/src/main/kotlin")
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+
+    classDirectories.from = files(
+            fileTree(dir: "$projectDir/build/tmp/kotlin-classes/debug", excludes: fileFilter),
+            fileTree(dir: "$projectDir/build/intermediates/javac/debug/classes", excludes: fileFilter)
+    )
+
+    executionData.from = files("$projectDir/build/jacoco/testDebugUnitTest.exec")
+}
+
 dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     // implementation 'com.google.android.gms:play-services-analytics:18.0.3'
     // implementation 'com.google.android.gms:play-services-location:21.0.1'
-    
+
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'io.mockk:mockk:1.13.10'
+    testImplementation 'org.robolectric:robolectric:4.9.2'
+    testImplementation 'androidx.test:core:1.5.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

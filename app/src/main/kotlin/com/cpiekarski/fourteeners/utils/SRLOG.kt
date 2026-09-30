@@ -5,7 +5,7 @@ import com.cpiekarski.fourteeners.BuildConfig
 
 object SRLOG {
     // Make google happy by not polluting logcat in production
-    private val silent = BuildConfig.DEBUG // "user".equals(Build.TYPE)
+    private var silent = BuildConfig.DEBUG // "user".equals(Build.TYPE)
     
     private fun log(l: String, tag: String, msg: String) {
         when (l) {

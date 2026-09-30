@@ -40,6 +40,7 @@ class DeviceLocation(private val context: Context) {
     private var lastLocation: Location? = null
     private var locationType: LocationType? = null
     private var looper: Looper? = null
+    private var handlerThread: HandlerThread? = null
     
     init {
         // Acquire a reference to the system Location Manager
@@ -97,7 +98,8 @@ class DeviceLocation(private val context: Context) {
         SRLOG.v(TAG, "looper is $mine")
         
         val thread = HandlerThread("DeviceLocationHandlerThread")
-        thread.start() // starts the thread.
+        handlerThread = thread
+        thread.start()
         looper = thread.looper
         
         SRLOG.v(TAG, "new looper is $looper")
@@ -135,6 +137,17 @@ class DeviceLocation(private val context: Context) {
     
     @Synchronized
     fun getLastLocationType(): LocationType? = locationType
+    
+    /**
+     * Stop the HandlerThread used for location updates.
+     * Call to prevent thread leaks.
+     */
+    fun stopUpdates() {
+        locationManager.removeUpdates(locationListener)
+        handlerThread?.looper?.quitSafely()
+        handlerThread = null
+        looper = null
+    }
     
     fun getLastPassiveLocation(): Location? {
         return if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
