@@ -30,7 +30,7 @@ jobs:
             java-version: '17'
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     # Set up JDK for building the Android/Kotlin project
     - name: Set up JDK ${{ matrix.java-version }}
